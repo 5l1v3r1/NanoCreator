@@ -19,10 +19,12 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 
 from core import views as core_views
-
+from Authentication import views as auth_views2
 urlpatterns = [
     url(r'^$', core_views.home, name='home'),
-    url(r'^accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    ## url(r'^accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    url(r'^accounts/login/', auth_views2.login_view, name='login'),
+    url(r'^accounts/regis/', auth_views2.regis_view, name='regis'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     path('admin/', admin.site.urls),
