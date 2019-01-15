@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
+from UserProfile.models import UserProfile
 
 # Create your views here.
 def login_view(request):
@@ -37,6 +38,16 @@ def regis_view(request):
         new_user.first_name = first_name
         new_user.last_name  = last_name
         new_user.save()
+        date, month, year = birthday.split('/')
+        birthday = "{}-{}-{}".format(year, month, date)
+        user_profile = UserProfile(
+            user=new_user,
+            phone=phone,
+            subject=subject,
+            gender=gender,
+            birthday=birthday
+        )
+        user_profile.save()
         login(
             request,
             new_user,
