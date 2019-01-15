@@ -32,7 +32,8 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
-                    <form method="POST">
+                    <form method="POST" action="/accounts/regis/">
+                      {% csrf_token %}
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
@@ -92,9 +93,9 @@
                             <div class="rs-select2 js-select-simple select--no-search">
                                 <select name="subject">
                                     <option disabled="disabled" selected="selected">Choose option</option>
-                                    <option>Subject 1</option>
-                                    <option>Subject 2</option>
-                                    <option>Subject 3</option>
+                                    <option>Illustrator</option>
+                                    <option>Developer</option>
+                                    <option>Other</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
